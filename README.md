@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Eternal Seas</title>
-</head>
-<body>
-    <h1>Welcome to Eternal Seas</h1>
+# Eternal Seas
 
-    <img src="images/logo.png" alt="Eternal Seas Logo" width="300">
+Welcome to my game!
 
-    <p>An epic ocean adventure awaits!</p>
-</body>
-      </html>
+![Eternal Seas Logo](images/logo.png)
+
+An epic ocean adventure awaits!
