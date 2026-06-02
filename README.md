@@ -1,4 +1,3 @@
-# Eternal Seas
 
 ![Eternal Seas Logo](logo.png)
 
