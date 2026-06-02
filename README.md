@@ -4,7 +4,7 @@
 
 Welcome to my game!
 
-An epic ocean adventure awaits!## Explore
+An epic ocean adventure awaits!
 
 # Explore
 - [Lore](lore.md)
