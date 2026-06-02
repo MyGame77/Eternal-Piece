@@ -1,92 +1,177 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Eternal Seas</title><style>
-    body {
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
+    <title>Eternal Seas</title>
 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        color: white;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
 
-        margin: 0;
+        background: linear-gradient(-45deg, #001018, #002b36, #003f5c, #001018);
+        background-size: 400% 400%;
+        animation: oceanBG 12s ease infinite;
+    }
+
+    @keyframes oceanBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .container {
-        width: 100%;
+        position: relative;
+        z-index: 10;
+        text-align: center;
+
+        padding: 50px;
+
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.25);
     }
 
     h1 {
-        font-size: 60px;
-        text-shadow: 0 0 20px cyan;
-        margin-bottom: 20px;
+        font-size: 140px;
+        text-shadow: 0 0 30px cyan;
+        margin-bottom: 15px;
     }
 
     p {
-        font-size: 20px;
+        font-size: 40px;
         margin-bottom: 30px;
+        color: #bdefff;
     }
 
     .center-image {
-        display: block;
-        margin: 20px auto;
-        width: 700px;
-        max-width: 90%;
+        width: 600px;
+        max-width: 95%;
         border-radius: 15px;
-        box-shadow: 0 0 25px cyan;
+        box-shadow: 0 0 35px cyan;
+        margin-bottom: 30px;
     }
 
     .glow-btn {
         display: block;
-        width: 280px;
-
+        width: 320px;
         margin: 15px auto;
-        padding: 15px;
+        padding: 18px;
 
-        text-align: center;
+        font-size: 26px;
 
         color: white;
         text-decoration: none;
-        font-size: 20px;
 
-        border: 2px solid cyan;
-        border-radius: 10px;
+        border: 1px solid cyan;
+        border-radius: 14px;
 
-        box-shadow: 0 0 10px cyan;
+        background: rgba(0, 255, 255, 0.06);
+        box-shadow: 0 0 15px cyan;
 
         transition: 0.3s;
     }
 
     .glow-btn:hover {
-        box-shadow: 0 0 25px cyan;
-        transform: scale(1.05);
+        transform: scale(1.1);
+        box-shadow: 0 0 30px cyan;
     }
 </style>
 
-</head><body><div class="container"><h1>🌊 Eternal Seas 🌊</h1>
+</head>
 
-<p>An epic ocean adventure awaits!</p>
+<body>
 
-<img src="logo.png" alt="Eternal Seas" class="center-image">
+<canvas id="particles"></canvas>
 
-<a class="glow-btn" href="play.html">
-    🎮 Play on Roblox
-</a>
+<div class="container">
+    <h1>🌊 Eternal Seas</h1>
 
-<a class="glow-btn" href="about.html">
-    📖 About
-</a>
+    <p>An epic ocean adventure awaits</p>
 
-<a class="glow-btn" href="lore.html">
-    ⚔️ Lore
-</a>
+    <img src="logo.png" class="center-image">
 
-<a class="glow-btn" href="screenshots.html">
-    📸 Screenshots
-</a>
+    <a class="glow-btn" href="play.html">Play on Roblox</a>
+    <a class="glow-btn" href="about.html">About</a>
+    <a class="glow-btn" href="lore.html">Lore</a>
+    <a class="glow-btn" href="screenshots.html">Screenshots</a>
+</div>
 
-</div></body>
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 90; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 3 + 1,
+        d: Math.random() * 1
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(0, 255, 255, 0.6)";
+    ctx.beginPath();
+
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        ctx.moveTo(p.x, p.y);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+    }
+
+    ctx.fill();
+    update();
+}
+
+function update() {
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.y -= p.d + 0.3;
+
+        if (p.y < 0) {
+            p.y = canvas.height;
+            p.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+function loop() {
+    draw();
+    requestAnimationFrame(loop);
+}
+
+loop();
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
 </html>
