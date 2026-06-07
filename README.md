@@ -1,5 +1,4 @@
-
-![Eternal Seas Logo](logo.png)
+#Eternal Seas
 
 Welcome to my game!
 
