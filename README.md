@@ -1,4 +1,4 @@
-#Eternal Seas
+# Eternal Seas
 
 Welcome to my game!
 
