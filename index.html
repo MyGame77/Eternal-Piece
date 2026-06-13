@@ -30,6 +30,28 @@
         animation: oceanBG 12s ease infinite;
     }
 
+    .yt-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:22px 45px;
+    font-size:30px;
+    font-weight:bold;
+    text-decoration:none;
+
+    color:white;
+    background:linear-gradient(45deg,#ff0000,#ff5500);
+
+    border-radius:20px;
+
+    box-shadow:0 0 30px #ff0000;
+    transition:0.3s;
+}
+
+.yt-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 50px #ff0000;
+}
+
     @keyframes oceanBG {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
@@ -119,6 +141,10 @@
     <a class="glow-btn" href="about.html">About</a>
     <a class="glow-btn" href="lore.html">Lore</a>
     <a class="glow-btn" href="ss.html">Screenshots</a>
+
+    <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" class="yt-btn">
+    🚀 Subscribe to the Best YouTuber 🚀
+    </a>
 </div>
 
 <script>
